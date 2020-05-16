@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.amolabs">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Lab5Main"></activity>
+        <activity android:name=".ResultsLab4" />
+        <activity android:name=".Lab4Main" />
+        <activity android:name=".Lab3Graphics">
+            <intent-filter>
+                <action android:name="android.intent.action.Lab3Graphics1" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Lab3Main">
+            <intent-filter>
+                <action android:name="android.intent.action.Lab3Main" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".GraphsLab2" />
+        <activity android:name=".GenerateRandomArrayWindow" />
+        <activity android:name=".SortingProgram">
+            <intent-filter>
+                <action android:name="android.intent.action.ExecutingProgram" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Lab2Main">
+            <intent-filter>
+                <action android:name="android.intent.action.ChoosingSortingAlgorithm" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".InfoAboutMe">
+            <intent-filter>
+                <action android:name="com.example.amolabs.InfoAboutMe" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CyclicalProgram">
+            <intent-filter>
+                <action android:name="com.example.amolabs.CyclicalProgram" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RamifiedProgram">
+            <intent-filter>
+                <action android:name="com.example.amolabs.RamifiedProgram" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".LinearProgram">
+            <intent-filter>
+                <action android:name="com.example.amolabs.LinearProgram" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CyclicalAlg">
+            <intent-filter>
+                <action android:name="com.example.amolabs.CyclicalAlg" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RamifiedAlg">
+            <intent-filter>
+                <action android:name="com.example.amolabs.RamifiedAlg" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".LinearAlg">
+            <intent-filter>
+                <action android:name="com.example.amolabs.LinearAlg" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Lab1Main">
+            <intent-filter>
+                <action android:name="com.example.amolabs.Lab1Page" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

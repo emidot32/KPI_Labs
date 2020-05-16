@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:orientation="vertical"
+    android:padding="3dp">
+
+    <TextView
+        android:id="@+id/labNumber"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_weight="1"
+        android:fontFamily="sans-serif"
+        android:text="Лабораторна робота №"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="22sp"
+        android:typeface="monospace" />
+
+    <TextView
+        android:id="@+id/labDescription"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_weight="1"
+        android:fontFamily="sans-serif"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="18sp"
+        android:typeface="sans" />
+</LinearLayout>

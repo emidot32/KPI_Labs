@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">AMO Labs</string>
+    <string name="_1">Лабораторна робота №1</string>
+    <string name="_2">Лабораторна робота №2</string>
+    <string name="_3">Лабораторна робота №3</string>
+    <string name="_4">Лабораторна робота №4</string>
+    <string name="_5">Лабораторна робота №5</string>
+    <string name="textView1_1">Виберіть тип алгоритму:</string>
+    <string name="textView1">Виберіть лабораторну роботу:</string>
+    <string name="linearAlgorithmCode">static double equation1(int a, int b, int c) { <br />
+        if (a > 0 &amp;&amp; b > 0) {<br />
+            return Math.cbrt(5+c*Math.sqrt(b+5*Math.sqrt(a)));
+        }<br />
+        System.out.println("а і b мають бути більше 0!");<br />
+        return 0.0;<br />
+ }</string>
+
+    <string name="ramifiedAlgorithmCode">static double equation2(int k, int d){<br />
+        double result;<br />
+        if (k>10){<br />
+            result = Math.sqrt(k*Math.sqrt(d*d) + d*Math.sqrt(k*k));<br />
+        }<br />
+        else result = (k+d)*(k+d);<br />
+        return result;<br />
+    }</string>
+
+    <string name="cyclicalAlgorithmCode">static double equation3(int[] A, int[] B, int n){<br />
+        double f;<br />
+        if (A.length == B.length &amp;&amp; A.length == n){<br />
+            double f1 = 1.0;<br />
+            double f2 = 0.0;<br />
+            int i = 0;<br />
+            while (i &lt; n){<br />
+                f1 *= (A[i]+B[i+1]);<br />
+                f2 += (A[i+1]*B[i]);<br />
+                f = f1 + f2<br />
+                System.out.println(f);<br />
+                i++;<br />
+        }<br />
+        else System.out.println("Розмір масиву не дорівнює n!");<br />
+        return f;<br />
+    }</string>
+    <string name="title_activity_test_basic">TestBasic</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="info0">Програму \"<i>AMO Labs</i>\" спроектував та розробив</string>
+    <string name="info1">студент групи <b>ІО-71</b></string>
+    <string name="info2"><b>Комісаров Ілля Андрійович</b></string>
+    <string name="info3">Номер у списку групи: <b>9</b></string>
+    <string name="info4">Номер залікової книжки: <b>7108</b></string>
+</resources>

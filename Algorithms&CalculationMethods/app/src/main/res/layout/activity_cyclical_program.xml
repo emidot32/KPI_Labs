@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CyclicalProgram">
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:text='Введіть числа та натисніть "Порахувати"'
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="24sp"
+            android:typeface="monospace"
+            android:visibility="visible"
+            app:fontFamily="sans-serif" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="6dp"
+                android:layout_height="101dp"
+                android:layout_weight="1"
+                android:text="А[] = "
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:typeface="normal"
+                app:fontFamily="sans-serif" />
+
+            <EditText
+                android:id="@+id/editTextCycl1"
+                android:layout_width="190dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Числа через кому"
+                android:inputType="text"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/imageButton1"
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="readFile1"
+                app:srcCompat="@drawable/download_2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="6dp"
+                android:layout_height="96dp"
+                android:layout_weight="1"
+                android:text="B[] = "
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:typeface="monospace"
+                app:fontFamily="sans-serif" />
+
+            <EditText
+                android:id="@+id/editTextCycl2"
+                android:layout_width="190dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Числа через кому"
+                android:inputType="text"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="5dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="readFile2"
+                app:srcCompat="@drawable/download_2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="79dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="256dp"
+                android:layout_height="93dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/eq3" />
+
+        </LinearLayout>
+
+        <ScrollView
+            style="@android:style/Widget.DeviceDefault.Light.ScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="155dp"
+            android:clipToPadding="true"
+            android:fillViewport="true"
+            android:scrollbarStyle="outsideInset">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/CyclicalResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="700dp"
+                    android:text="Результат"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:typeface="monospace"
+                    app:fontFamily="sans-serif" />
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@android:color/holo_red_light"
+            android:onClick="calculate"
+            android:text="Порахувати"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@android:color/holo_blue_dark"
+            android:onClick="saveText"
+            android:text="Записати в файл"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textSize="30sp"
+            android:typeface="normal" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
