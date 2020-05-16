@@ -1,4 +1,4 @@
-# Course 1. Discrete Math labs
+# Course 1. Discrete Math
 Simple graphs algorithms and more. There is used tkinter library for GUI. 
 
 The first 2-3 laboratory work is one of the most voluminous laboratory work during an education.
