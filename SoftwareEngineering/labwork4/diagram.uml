@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="0.0" y="242.0">EngineeringSoftWare.labwork4.Coordinates</node>
+    <node x="0.0" y="405.0">EngineeringSoftWare.labwork4.Factory</node>
+    <node x="331.0" y="123.5">EngineeringSoftWare.labwork4.Rectangle</node>
+    <node x="155.5" y="0.0">EngineeringSoftWare.labwork4.VectorGraphObject</node>
+    <node x="0.0" y="123.5">EngineeringSoftWare.labwork4.Triangle</node>
+    <node x="149.0" y="101.0">EngineeringSoftWare.labwork4.Line</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="EngineeringSoftWare.labwork4.Line" target="EngineeringSoftWare.labwork4.VectorGraphObject">
+      <point x="0.0" y="-48.0" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="EngineeringSoftWare.labwork4.Triangle" target="EngineeringSoftWare.labwork4.VectorGraphObject">
+      <point x="0.0" y="-25.5" />
+      <point x="64.5" y="76.0" />
+      <point x="180.33333333333337" y="76.0" />
+      <point x="-49.66666666666663" y="25.5" />
+    </edge>
+    <edge source="EngineeringSoftWare.labwork4.Rectangle" target="EngineeringSoftWare.labwork4.VectorGraphObject">
+      <point x="0.0" y="-25.5" />
+      <point x="395.5" y="76.0" />
+      <point x="279.66666666666674" y="76.0" />
+      <point x="49.66666666666674" y="25.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="569.5" y="327.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

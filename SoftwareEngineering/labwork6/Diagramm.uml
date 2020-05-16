@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="0.0" y="105.0">EngineeringSoftWare.labwork6.VideoCard</node>
+    <node x="509.0" y="132.0">EngineeringSoftWare.labwork6.Processor</node>
+    <node x="244.0" y="159.0">EngineeringSoftWare.labwork6.RAM</node>
+    <node x="0.0" y="663.0">EngineeringSoftWare.labwork6.Administrator</node>
+    <node x="277.5" y="0.0">EngineeringSoftWare.labwork6.Element</node>
+    <node x="110.5" y="504.0">EngineeringSoftWare.labwork6.Visitor</node>
+    <node x="217.0" y="663.0">EngineeringSoftWare.labwork6.User</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="EngineeringSoftWare.labwork6.Processor" target="EngineeringSoftWare.labwork6.Element">
+      <point x="0.0" y="-150.0" />
+      <point x="619.5" y="80.0" />
+      <point x="425.83333333333337" y="80.0" />
+      <point x="59.33333333333337" y="27.5" />
+    </edge>
+    <edge source="EngineeringSoftWare.labwork6.Administrator" target="EngineeringSoftWare.labwork6.Visitor">
+      <point x="0.0" y="-82.5" />
+      <point x="98.5" y="638.0" />
+      <point x="157.75" y="638.0" />
+      <point x="-47.25" y="54.5" />
+    </edge>
+    <edge source="EngineeringSoftWare.labwork6.VideoCard" target="EngineeringSoftWare.labwork6.Element">
+      <point x="0.0" y="-177.0" />
+      <point x="112.0" y="80.0" />
+      <point x="307.1666666666667" y="80.0" />
+      <point x="-59.333333333333314" y="27.5" />
+    </edge>
+    <edge source="EngineeringSoftWare.labwork6.RAM" target="EngineeringSoftWare.labwork6.Element">
+      <point x="0.0" y="-123.0" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="EngineeringSoftWare.labwork6.User" target="EngineeringSoftWare.labwork6.Visitor">
+      <point x="0.0" y="-82.5" />
+      <point x="311.5" y="638.0" />
+      <point x="252.25" y="638.0" />
+      <point x="47.25" y="54.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9" x="625.0" y="421.99999999999994" />
+  <SelectedNodes>
+    <node>EngineeringSoftWare.labwork6.Visitor</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

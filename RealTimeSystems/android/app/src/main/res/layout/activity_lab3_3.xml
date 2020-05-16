@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Lab3_3">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/GenAlgText"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="bottom"
+            android:text="  Genetic algorithm for solving the diophantine equation"
+            android:textColor="#FC050505"
+            android:textSize="28dp" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="  Input integer coefs and y:"
+            android:textSize="24dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/aEditText"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="a"
+                android:textSize="22dp"
+                android:gravity="right"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="37dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="22dp"
+                android:text="*x1 +" />
+
+            <EditText
+                android:id="@+id/bEditText"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="b"
+                android:textSize="22dp"
+                android:gravity="right"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="37dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="22dp"
+                android:text="*x2 +" />
+
+            <EditText
+                android:id="@+id/cEditText"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="c"
+                android:textSize="22dp"
+                android:gravity="right"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="37dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="22dp"
+                android:text="*x3 +" />
+
+            <EditText
+                android:id="@+id/dEditText"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="d"
+                android:textSize="22dp"
+                android:gravity="right"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="37dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="22dp"
+                android:text="*x4 = " />
+
+            <EditText
+                android:id="@+id/yEditText"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="y"
+                android:textSize="22dp"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="340dp"
+                android:layout_height="40dp"
+                android:layout_gravity="top"
+                android:text="  Input number of descendants: "
+                android:textSize="24dp" />
+
+            <EditText
+                android:id="@+id/numberOfDescendants"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:hint="25"
+                android:textSize="24dp"
+                android:inputType="numberDecimal" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/calcBtn3_3"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="7dp"
+            android:background="#089164"
+            android:onClick="calculate"
+            android:text="Calculate"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="26dp" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginBottom="5dp"
+            android:text="  Results:"
+            android:textColor="#FC050505"
+            android:textSize="26dp" />
+
+        <TextView
+            android:id="@+id/xResults"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text=""
+            android:textSize="24dp"/>
+
+        <TextView
+            android:id="@+id/executingTime"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="    Executing time: "
+            android:textSize="24dp"/>
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

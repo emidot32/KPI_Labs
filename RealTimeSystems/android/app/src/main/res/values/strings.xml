@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">RTS Labs</string>
+    <string name="info"><![CDATA[   A(0,6), B(1,5) < P and C(3,3), D(2,4) > P with weights:]]></string>
+    <string-array name="learning_speed">
+        <item>0.001</item>
+        <item>0.01</item>
+        <item>0.05</item>
+        <item>0.1</item>
+        <item>0.2</item>
+        <item>0.3</item>
+    </string-array>
+    <string-array name="time_dead_line">
+        <item>0.5</item>
+        <item>1</item>
+        <item>2</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="iteration_dead_line">
+        <item>100</item>
+        <item>200</item>
+        <item>500</item>
+        <item>1000</item>
+    </string-array>
+</resources>

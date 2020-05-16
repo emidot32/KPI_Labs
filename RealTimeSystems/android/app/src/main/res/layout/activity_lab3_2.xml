@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Lab3_2">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/PeceptronModelText"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="bottom"
+            android:text="  Perceptron Model"
+            android:textColor="#FC050505"
+            android:textSize="28dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_gravity="top"
+                android:text="   Select learning speed: "
+                android:textSize="22dp" />
+
+            <Spinner
+                android:id="@+id/spinnerSpeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/learning_speed" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_gravity="top"
+                android:text="   Select time deadline: "
+                android:textSize="22dp" />
+
+            <Spinner
+                android:id="@+id/spinnerTimeDeadline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/time_dead_line" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="270dp"
+                android:layout_height="50dp"
+                android:layout_gravity="top"
+                android:text="   Select iteration deadline: "
+                android:textSize="22dp" />
+
+            <Spinner
+                android:id="@+id/spinnerIterationDeadline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/iteration_dead_line" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/calcBtn"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="7dp"
+            android:background="#089164"
+            android:onClick="calculate"
+            android:text="Calculate"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="26dp" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="5dp"
+            android:text="  Results:"
+            android:textColor="#FC050505"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:text="@string/info"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/weights"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textSize="22dp"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/executionTime3_2"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="22dp"
+            android:text="    Executing time: " />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
