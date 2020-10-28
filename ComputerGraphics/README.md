@@ -1,4 +1,4 @@
 # Course 2. Computer Graphics
-Example of using `PyQt` and `pygame` for laboratory work on Computer Graphics.
+Example of using `PyQt`, `pygame` and `matplolib` for laboratory work on Computer Graphics.
 
-Nothing special. Just painting charts and simple simulation in `pygame`.
+Nothing special. Just GUI programs that paints charts in `matplotlib` and simulates a movement of objects in `pygame`.
