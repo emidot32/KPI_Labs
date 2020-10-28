@@ -2,7 +2,7 @@
 
 Android program with labs of various algorithm. For example: sorting, interpolations, system of linear equations solving etc.
 
-Technologies & languages: Java, Android SDK
+Technologies & languages: `Java`, `Android SDK`
 
 Labs:
 
