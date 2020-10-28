@@ -5,7 +5,9 @@ Each laboratory work is a writing of a parallel program for solving a mathematic
 Languages & libs: `Java`, `C#`, `OpenMP`, `MPI` (MPJ Express)
 
 MA, MB, MC... - matrices. 
+
 A, B, C... - vectors. 
+
 a, b, c... - numbers. 
 
 Lab and settlement works:
