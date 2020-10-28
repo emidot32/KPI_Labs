@@ -2,7 +2,7 @@
 
 Laboratory work has nothing to do with the name of the subject. The Fourier transforms for a random signal (part 1) and various algorithms (part 2) were considered in this course.
 
-***Technologies&languages***: Python, Java, Android SDK, Jupyter Notebook.
+Technologies & languages: `Python`, `Java`, `Android SDK`, `Jupyter Notebook`.
 
 Part 1 (Python):
 
