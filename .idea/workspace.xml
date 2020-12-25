@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d00e7565-0f8a-4b0d-a6db-fb43e2115a06" name="Default Changelist" comment="Added network lab">
+      <change afterPath="$PROJECT_DIR$/.idea/KPI_Labs.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/.idea/description.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/.idea/project-template.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/SP3.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab1/Main$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab1/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab1/MemoryManager.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab1/Process.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab1/VirtualPage.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab1/logs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab1/logs.txt.1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab1/logs.txt.2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab2/Directory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab2/DiskSpace.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab2/Driver.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab2/File.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab2/FilePart.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab2/FsEntity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab2/HardLink.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab2/IEntityPart.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab2/Link.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab2/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/out/production/SP3/com/systemsoftware/labs/lab2/SymLink.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/src/com/systemsoftware/labs/lab1/logs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/src/com/systemsoftware/labs/lab1/logs.txt.1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SystemProgramming/src/com/systemsoftware/labs/lab1/logs.txt.2" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="emidot32" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1jWP4QyMmicNs8QyFWqvrXUBrqi" />
+  <component name="ProjectLevelVcsManager">
+    <OptionsSetting value="false" id="Update" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Programming/BSS_microservices" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.other" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d00e7565-0f8a-4b0d-a6db-fb43e2115a06" name="Default Changelist" comment="" />
+      <created>1603916683258</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603916683258</updated>
+      <workItem from="1603916684540" duration="1367000" />
+      <workItem from="1604350561516" duration="203000" />
+      <workItem from="1605366496095" duration="622000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added System Programming 3 course labs">
+      <created>1603917173117</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603917173117</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added README.md to System Programming labs project">
+      <created>1603917377663</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1603917377663</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added network lab">
+      <created>1604350699636</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1604350699636</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added System Programming 3 course labs" />
+    <MESSAGE value="Added README.md to System Programming labs project" />
+    <MESSAGE value="Added network lab" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added network lab" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="550" y="174" width="800" height="675" key="#Deployment" timestamp="1603917128706">
+      <screen x="0" y="0" width="1920" height="1030" />
+    </state>
+    <state x="550" y="174" width="800" height="675" key="#Deployment/0.0.1920.1030@0.0.1920.1030" timestamp="1603917128706" />
+    <state x="453" y="8" width="1004" height="1009" key="CommitChangelistDialog2" timestamp="1604350699152">
+      <screen x="0" y="0" width="1920" height="1030" />
+    </state>
+    <state x="453" y="8" width="1004" height="1009" key="CommitChangelistDialog2/0.0.1920.1030@0.0.1920.1030" timestamp="1604350699152" />
+    <state x="743" y="272" width="424" height="482" key="FileChooserDialogImpl" timestamp="1605367639037">
+      <screen x="0" y="0" width="1920" height="1030" />
+    </state>
+    <state x="743" y="272" width="424" height="482" key="FileChooserDialogImpl/0.0.1920.1030@0.0.1920.1030" timestamp="1605367639037" />
+    <state x="555" y="248" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1604350707552">
+      <screen x="0" y="0" width="1920" height="1030" />
+    </state>
+    <state x="555" y="248" width="800" height="529" key="Vcs.Push.Dialog.v2/0.0.1920.1030@0.0.1920.1030" timestamp="1604350707552" />
+    <state x="717" y="424" width="485" height="180" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603919343960">
+      <screen x="0" y="0" width="1920" height="1030" />
+    </state>
+    <state x="717" y="424" width="485" height="180" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1030@0.0.1920.1030" timestamp="1603919343960" />
+  </component>
+</project>
