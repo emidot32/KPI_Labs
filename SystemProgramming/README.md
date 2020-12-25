@@ -4,10 +4,10 @@ System software was studied in this course. The main task of laboratory work is 
 
 Language: `Java`
 
-Lab and course works:
+Labs:
 
 * lab1 - implementation of the virtual page replacement algorithm.
 
 * lab2 - implementation of own file system in which you can create folders, files, open them, navigate through folders, work with files using a descriptor, create hard and symbolic links, etc.
 
-* course work - 
+Course work is represented in the other project in KPI_Labs repo.
