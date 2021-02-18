@@ -1,44 +1,27 @@
 package edu.sp.cw;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.IntStream;
+
+import static edu.sp.cw.Main.NUMBER_OF_PROCESSORS;
 
 public class Planner {
-    private final int NUMBER_OF_PROCESSORS = 4;;
     private final int numberOfTasks;
     private Integer count = 1;
     private List<Task> tasks;
     private List<Dependency> dependencies = new ArrayList<>();
-    private List<Processor> processors = new ArrayList<>();
+    private List<Processor> processors;
     List<String> modelingResult = new ArrayList<>();
 
-    public Planner(int[][] adjacencyMatrix, int[] tasksWeights) {
+    public Planner(int[][] adjacencyMatrix, int[] tasksWeights, Topology topology) {
         numberOfTasks = adjacencyMatrix.length;
         getDataFromAdjacencyMatrix(adjacencyMatrix, tasksWeights);
-        IntStream.range(0, NUMBER_OF_PROCESSORS)
-                .forEach(i -> processors.add(new Processor(i+1)));
-        createTopology();
+        processors = topology.createTopology();
     }
 
-    // Method for topology setting. In this case - vector or linear.
-    private void createTopology(){
-        for (int i = 0; i < processors.size(); i++) {
-            List<Processor> neighboursOfCurrentProc = processors.get(i).neighbours;
-            if (i == 0){
-                neighboursOfCurrentProc.add(processors.get(i+1));
-            } else if (i == processors.size()-1){
-                neighboursOfCurrentProc.add(processors.get(i-1));
-            } else {
-                neighboursOfCurrentProc.add(processors.get(i-1));
-                neighboursOfCurrentProc.add(processors.get(i+1));
-            }
-        }
-    }
-
-    // Get the data from the adjacency matrix and tasks weights array and set to corresponding fields
     void getDataFromAdjacencyMatrix(int[][] adjacencyMatrix, int[] tasksWeights) {
         tasks = new ArrayList<>();
         for (int i = 1; i <= numberOfTasks; i++) {
@@ -56,38 +39,35 @@ public class Planner {
                 }
             }
         }
-        //tasks.forEach( task -> System.out.format("[%d: %s]\n", task.id, task));
-        //System.out.println(dependencies);
     }
 
+    // Bubble Scheduling and Allocation algorithm for task allocation for multiprocessing system
     public void run(){
         initWrite();
         //processors.sort(Comparator.comparingInt(p -> p.neighbours.size()));
         for (Task task : tasks) {
-            Tact tact = new Tact(task, null, null);
-            Tact emptyTact = new Tact();
             for (int j = 0; j < task.leadTime; j++) {
-                for (Processor processor : processors) {
-                    processor.execution.put(count, emptyTact);
+                Tact tact = new Tact(task, null, null);
+                for (int i = 1; i < processors.size(); i++) {
+                    processors.get(i).execution.put(count, new Tact());
                 }
                 processors.get(0).execution.put(count++, tact);
             }
         }
-        //processors.get(1).execution.forEach((tact, taskOnTact) -> System.out.format("%d: %s\n", tact, taskOnTact));
         for (Processor processor: processors){
             List<Task> tasksOfPivot = processor.getTasks();
             for (int i = 1; i < tasksOfPivot.size(); i++) {
-                Map<Integer, Tact> execution = processor.execution;
                 Task task = tasksOfPivot.get(i);
+                handleForwarding(task, processor, false, true);
                 int oldST = getStartTimeOrEndTime(task, processor, true);
-                int dat = getDAT(task, processor);
-                if (oldST > dat){
-                    Map.Entry<Processor, Integer> newBetterSt = getBetterSt(task, processor);
-                    if (newBetterSt.getValue() < oldST){
-                        migrateToOtherProcessor(task, newBetterSt, processor);
-                    }
+                Map.Entry<Processor, Integer> newBetterSt = getBetterSt(task, processor);
+                if (newBetterSt.getValue() < oldST){
+                    migrateToOtherProcessor(task, newBetterSt, processor);
+                } else {
+                    handleForwarding(task, processor, true, false);
                 }
             }
+            break;
         }
         saveModelingResults();
         writeToFile(modelingResult);
@@ -97,60 +77,71 @@ public class Planner {
         Processor newProc = newProcessorAndTime.getKey();
         int tactNum = newProcessorAndTime.getValue();
         for (int j = 0; j < task.leadTime; j++) {
-            newProc.execution.put(j+tactNum, new Tact(task, null, null));
+            newProc.execution.get(j+tactNum).task = task;
         }
         for (int i = 1; i <= oldProcessor.execution.size(); i++) {
-            if (oldProcessor.execution.get(i).task.equals(task)) {
+            if (task.equals(oldProcessor.execution.get(i).task)) {
                 shiftExecutionUp(oldProcessor, i, task.leadTime);
                 break;
             }
         }
-        task.parentTasks.forEach(parent -> {
-            if (!isParentTaskOnSameProcessor(parent, task)){
-                Processor parentProc = getProcessorOfTask(parent);
-                int weight = getDependencyWeight(task, parent)*steps(parentProc, newProc, 1);
-                int parentEndTime = getStartTimeOrEndTime(parent, parentProc, false);
-                for (int i = 1; i <= weight; i++) {
-                    parentProc.execution.get(parentEndTime+i).sendData=parent.id;
-                    newProc.execution.get(parentEndTime+i).receiveData=parent.id;
-                }
-            }
-        });
+        handleForwarding(task, newProc, true, false);
         task.dependentTasks.forEach(child -> {
-            if (!isParentTaskOnSameProcessor(child, task)){
-                Processor childProc = getProcessorOfTask(child);
-                int weight = getDependencyWeight(child, task)*steps(newProc, childProc, 1);
-                int childStartTime = getStartTimeOrEndTime(child, childProc, true);
-                int parentEndTime = getStartTimeOrEndTime(task, newProc, false);
-                int tactDifs =  childStartTime - parentEndTime;
-                if (tactDifs < weight) {
-                    shiftExecutionDown(childProc, childStartTime, weight-tactDifs);
-                }
-                for (int i = 1; i <= weight; i++) {
-                    newProc.execution.get(parentEndTime+i).sendData=task.id;
-                    System.out.println((parentEndTime+i) +": "+ childProc.execution.get(parentEndTime+i));
-                    childProc.execution.get(parentEndTime+i).receiveData=task.id;
-                }
+            Processor childProcessor = getProcessorOfTask(child);
+            if (!newProc.equals(childProcessor)){
+                int weight = getDependencyWeight(child, task)*steps(newProc, childProcessor, 1);
+                shiftDownOrUpForForwarding(child, task, childProcessor, newProc, weight, false);
             }
         });
     }
 
-    private void shiftExecutionUp(Processor processor, int start, int shift) {
-        for (int i = start; i <= processor.execution.size(); i++) {
-            processor.execution.put(i, processor.execution.get(i+shift));
-        }
-        for (int i = processor.execution.size(); i > processor.execution.size()-shift; i--) {
-            processor.execution.put(i, new Tact());
+    private void handleForwarding(Task task, Processor processor, boolean writeSendReceive, boolean shiftUp) {
+        for (Task parent: task.parentTasks) {
+            Processor parentProcessor = getProcessorOfTask(parent);
+            if (!processor.equals(parentProcessor)) {
+                int weight = getDependencyWeight(task, parent)*steps(parentProcessor, processor, 1);
+                int startTime = shiftDownOrUpForForwarding(task, parent, processor, parentProcessor, weight, shiftUp);
+                if (writeSendReceive) {
+                    for (int i = startTime-1; i >= startTime-weight; i--) {
+                        parentProcessor.execution.get(i).sendData=parent.id;
+                        processor.execution.get(i).receiveData=parent.id;
+                    }
+                }
+            }
         }
     }
 
-    private void shiftExecutionDown(Processor processor, int start, int shift) {
-        for (int i = processor.execution.size(); i >= start; i--) {
-            processor.execution.put(i+shift, processor.execution.get(i));
+    private int shiftDownOrUpForForwarding(Task task, Task parent, Processor processor, Processor parentProcessor, int weight, boolean shiftUp) {
+        int startTime = getStartTimeOrEndTime(task, processor, true);
+        int parentEndTime = findTaskAndGetStOrEt(parent, false);
+        int parentEndTimeWithForwarding = parentEndTime + getTactsWithSendingReceivingDataAfterEt(parentProcessor, parentEndTime);
+        int tactDifs =  startTime - parentEndTimeWithForwarding;
+        if (tactDifs < weight) {
+            shiftExecutionDown(processor, startTime, weight-tactDifs);
+            startTime += weight-tactDifs;
         }
-        for (int i = start; i < start+shift; i++) {
-            processor.execution.put(i, new Tact());
+        int shiftDown = Math.max(getShiftDownForTask(processor, startTime, weight, parentEndTimeWithForwarding),
+                                 getShiftDownForTask(parentProcessor, startTime, weight, parentEndTimeWithForwarding));
+        shiftExecutionDown(processor, startTime, shiftDown);
+        startTime += shiftDown;
+        if (shiftDown == 0 && tactDifs > weight && shiftUp) {
+            int availableStartTime = getNearestFreeTactForLoad(startTime-tactDifs+weight, startTime, processor);
+            shiftExecutionUp(processor, availableStartTime, startTime-availableStartTime);
+            startTime = availableStartTime;
         }
+        return startTime;
+    }
+
+    private int getShiftDownForTask(Processor processor, int startTime, int weight, int parentEndTime) {
+        int shiftDown = weight;
+        int endTime = Math.max(startTime-weight, parentEndTime);
+        for (int i = startTime-1; i >= endTime; i--) {
+            if (processor.execution.get(i).isFreeForSendReceive())
+                shiftDown--;
+            else
+                break;
+        }
+        return shiftDown;
     }
 
     private Map.Entry<Processor, Integer> getBetterSt(Task task, Processor oldProcessor) {
@@ -164,16 +155,58 @@ public class Planner {
     }
 
     private int getDAT(Task task, Processor processor) {
-        return task.parentTasks.stream()
-                .mapToInt(parent -> {
-                    if (isParentTaskOnSameProcessor(task, parent))
-                        return findTaskAndGetStOrEt(parent, false);
-                    Processor processorOfParent = getProcessorOfTask(parent);
-                    return findTaskAndGetStOrEt(parent, false) + getDependencyWeight(task, parent)
-                            * steps(processor, processorOfParent, 1);
-                })
-                .max()
-                .orElse(-1)+1;
+        List<Integer> times = new ArrayList<>();
+        int sumTime = 0;
+        for (Task parent: task.parentTasks) {
+            Processor parentProcessor = getProcessorOfTask(parent);
+            int taskEndTime = findTaskAndGetStOrEt(parent, false);
+            if (processor.equals(parentProcessor))
+                times.add(taskEndTime);
+            else {
+                Processor processorOfParent = getProcessorOfTask(parent);
+                sumTime += taskEndTime + getTactsWithSendingReceivingDataAfterEt(processorOfParent, taskEndTime) +
+                        getDependencyWeight(task, parent) * steps(processor, processorOfParent, 1);
+                times.add(sumTime);
+            }
+        }
+        return times.stream().mapToInt(Integer::intValue).max().orElse(-1)+1;
+    }
+
+    private void shiftExecutionDown(Processor processor, int start, int shift) {
+        for (int i = processor.execution.size(); i >= start; i--) {
+            processor.execution.put(i+shift, processor.execution.get(i));
+        }
+        for (int i = start; i < start+shift; i++) {
+            processor.execution.put(i, new Tact());
+        }
+    }
+
+    private int getNearestFreeTactForLoad(int startTime, int endTime, Processor processor) {
+        int i = startTime;
+        while (!(processor.execution.get(i) != null && processor.execution.get(i).isFreeForTaskLoad())
+                && i != endTime) {
+            i++;
+        }
+        return i;
+    }
+
+    private void shiftExecutionUp(Processor processor, int start, int shift) {
+        for (int i = start; i <= processor.execution.size(); i++) {
+            processor.execution.put(i, processor.execution.get(i+shift));
+        }
+        for (int i = processor.execution.size(); i > processor.execution.size()-shift; i--) {
+            processor.execution.put(i, new Tact());
+        }
+    }
+
+    private int getTactsWithSendingReceivingDataAfterEt(Processor processor, int taskEndTime) {
+        int count = 0;
+        int i = taskEndTime+1;
+        while (!(processor.execution.get(i) != null && processor.execution.get(i).isFreeForSendReceive())) {
+            count++;
+            i++;
+        }
+        return count;
     }
 
     private int getStartTimeOrEndTime(Task task, Processor processor, boolean start){
@@ -202,20 +235,15 @@ public class Planner {
         return null;
     }
 
-    private boolean isParentTaskOnSameProcessor(Task task, Task parent){
-        for (Processor processor: processors){
-            return (processor.hasTask(task) && processor.hasTask(parent));
-        }
-        return false;
-    }
-
     private int steps(Processor processor1, Processor processor2, int count){
+        List<Integer> steps = new ArrayList<>();
         if (processor1.hasNeighbour(processor2) || count > NUMBER_OF_PROCESSORS) return count;
         else {
-            List<Processor> neighbours = processor1.neighbours;
             count++;
-            return Math.min(steps(neighbours.get(0), processor2, count),
-                    steps(neighbours.get(neighbours.size()-1), processor2, count));
+            for (Processor neighbour: processor1.neighbours) {
+                steps.add(steps(neighbour, processor2, count));
+            }
+            return steps.stream().mapToInt(Integer::intValue).min().orElse(NUMBER_OF_PROCESSORS-1);
         }
     }
 
@@ -236,6 +264,7 @@ public class Planner {
             modelingResult.add(tactLine.toString());
         }
     }
+
     private int getDependencyWeight(Task task1, Task task2) {
         for (Dependency dependency : dependencies) {
             if ((dependency.fromTask.equals(task1)) && (dependency.toTask.equals(task2))) {
@@ -251,6 +280,9 @@ public class Planner {
     private void writeToFile(List<String> results) {
         String fileName = "results.csv";
         try {
+            File file = new File(fileName);
+            if (file.exists())
+                file.delete();
             BufferedWriter newFile = new BufferedWriter(new FileWriter(fileName));
             for (String line : results) {
                 newFile.write(line + "\n");

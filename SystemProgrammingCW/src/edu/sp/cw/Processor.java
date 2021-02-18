@@ -61,8 +61,8 @@ public class Processor {
 
     @Override
     public String toString() {
-        List<Integer> neighbourIds = neighbours.stream()
-                .map(neighbour -> neighbour.id).collect(Collectors.toList());
+        List<String> neighbourIds = neighbours.stream()
+                .map(neighbour -> Integer.toBinaryString(neighbour.id)).collect(Collectors.toList());
         return "Processor{" +
                 "id=" + id +
                 ", neighbours=" + neighbourIds +
