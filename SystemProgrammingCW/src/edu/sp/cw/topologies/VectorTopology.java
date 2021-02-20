@@ -1,15 +1,16 @@
-package edu.sp.cw;
+package edu.sp.cw.topologies;
+
+import edu.sp.cw.Processor;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static edu.sp.cw.Main.NUMBER_OF_PROCESSORS;
 
-public class VectorTopology implements Topology{
+public class VectorTopology extends Topology{
     @Override
     // Method for topology setting. In this case - vector or linear.
-    public List<Processor> createTopology(){
+    public List<Processor> createTopology(boolean part) {
         List<Processor> processors = new ArrayList<>();
         IntStream.range(0, NUMBER_OF_PROCESSORS)
                 .forEach(i -> processors.add(new Processor(i)));
@@ -25,5 +26,9 @@ public class VectorTopology implements Topology{
             }
         }
         return processors;
+    }
+
+    public VectorTopology(int NUMBER_OF_PROCESSORS) {
+        super(NUMBER_OF_PROCESSORS);
     }
 }

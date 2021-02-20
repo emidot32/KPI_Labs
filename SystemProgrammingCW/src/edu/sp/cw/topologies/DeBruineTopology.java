@@ -1,14 +1,15 @@
-package edu.sp.cw;
+package edu.sp.cw.topologies;
+
+import edu.sp.cw.Processor;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static edu.sp.cw.Main.NUMBER_OF_PROCESSORS;
 
-public class DeBruineTopology implements Topology {
+public class DeBruineTopology extends Topology {
     @Override
-    public List<Processor> createTopology() {
+    public List<Processor> createTopology(boolean part) {
         List<Processor> processors = new ArrayList<>();
         IntStream.range(0, NUMBER_OF_PROCESSORS)
                 .forEach(i -> processors.add(new Processor(i)));
@@ -20,6 +21,7 @@ public class DeBruineTopology implements Topology {
             addNeighbourWithCheck(processors.get(i >> 1), neighbours, currentProcessor);
             addNeighbourWithCheck(processors.get((i >> 1)+NUMBER_OF_PROCESSORS/2), neighbours, currentProcessor);
         }
+        removeTwoProcessors(part, processors);
         return processors;
     }
 
@@ -39,5 +41,9 @@ public class DeBruineTopology implements Topology {
         String binary = Integer.toBinaryString(i << 1);
         if (binary.length() > 3) return Integer.parseInt(binary.substring(1), 2);
         return Integer.parseInt(binary, 2);
+    }
+
+    public DeBruineTopology(int numberOfProcessors) {
+        super(numberOfProcessors);
     }
 }

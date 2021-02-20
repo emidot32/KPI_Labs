@@ -5,9 +5,9 @@ import java.util.stream.Collectors;
 
 
 public class Processor {
-    int id;
-    Map<Integer, Tact> execution = new HashMap<>();
-    List<Processor> neighbours = new ArrayList<>();
+    public int id;
+    public Map<Integer, Tact> execution = new HashMap<>();
+    public List<Processor> neighbours = new ArrayList<>();
 
     public Processor(int id) {
         this.id = id;
@@ -18,12 +18,15 @@ public class Processor {
     }
 
     public boolean hasTask(Task task_) {
-        return getTasks().stream().anyMatch(task -> task_.equals(task));
+        return getTasks().stream().anyMatch(task_::equals);
     }
 
     public List<Task> getTasks(){
         Set<Task> tasks = new HashSet<>();
-        execution.forEach((tact, taskOnTact) -> tasks.add(taskOnTact != null ? taskOnTact.task : null));
+        execution.forEach((tact, taskOnTact) -> {
+            if (taskOnTact != null)
+                tasks.add(taskOnTact.task);
+        });
         //System.out.println(tasks);
         return new ArrayList<>(tasks);
     }

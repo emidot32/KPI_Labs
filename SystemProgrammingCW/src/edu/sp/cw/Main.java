@@ -1,8 +1,9 @@
 package edu.sp.cw;
 
 
+import edu.sp.cw.topologies.HypercubeTopology;
+
 public class Main {
-    final static int NUMBER_OF_PROCESSORS = 4;
     public static void main(String[] args) {
 
         int[][] ADJACENCY_MATRIX = {
@@ -63,9 +64,9 @@ public class Main {
         int[] TASKS_WEIGHTS_CRAMER =
                 {41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 15, 15, 15, 15, 15, 4, 4, 4, 4};
 
-        Planner planner = new Planner(ADJACENCY_MATRIX, TASKS_WEIGHTS, new VectorTopology());
+        Planner planner = new Planner(ADJACENCY_MATRIX_CRAMER, TASKS_WEIGHTS_CRAMER, new HypercubeTopology(8),
+                "result_hypercube_cramer_graph.csv", false);
         planner.run();
-        //System.out.println(planner.testSteps());
 
     }
 }

@@ -1,35 +1,40 @@
 package edu.sp.cw;
 
+import edu.sp.cw.topologies.Topology;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-import static edu.sp.cw.Main.NUMBER_OF_PROCESSORS;
 
 public class Planner {
-    private final int numberOfTasks;
+    final int NUMBER_OF_PROCESSORS;
+    private final int NUMBER_OF_TASKS;
     private Integer count = 1;
     private List<Task> tasks;
     private List<Dependency> dependencies = new ArrayList<>();
     private List<Processor> processors;
     List<String> modelingResult = new ArrayList<>();
+    private final String fileName;
 
-    public Planner(int[][] adjacencyMatrix, int[] tasksWeights, Topology topology) {
-        numberOfTasks = adjacencyMatrix.length;
+    public Planner(int[][] adjacencyMatrix, int[] tasksWeights, Topology topology, String fileName, boolean part) {
+        NUMBER_OF_TASKS = adjacencyMatrix.length;
         getDataFromAdjacencyMatrix(adjacencyMatrix, tasksWeights);
-        processors = topology.createTopology();
+        processors = topology.createTopology(part);
+        this.fileName = fileName;
+        this.NUMBER_OF_PROCESSORS = topology.NUMBER_OF_PROCESSORS;
     }
 
     void getDataFromAdjacencyMatrix(int[][] adjacencyMatrix, int[] tasksWeights) {
         tasks = new ArrayList<>();
-        for (int i = 1; i <= numberOfTasks; i++) {
+        for (int i = 1; i <= NUMBER_OF_TASKS; i++) {
             Task task = new Task(i, tasksWeights[i-1]);
             tasks.add(task);
         }
-        for (int i = 0; i < numberOfTasks; i++) {
-            for (int j = 0; j < numberOfTasks; j++) {
+        for (int i = 0; i < NUMBER_OF_TASKS; i++) {
+            for (int j = 0; j < NUMBER_OF_TASKS; j++) {
                 if (adjacencyMatrix[i][j] != 0) {
                     tasks.get(i).dependentTasks.add(tasks.get(j));
                     dependencies.add(new Dependency(tasks.get(i), tasks.get(j), adjacencyMatrix[i][j]));
@@ -70,7 +75,7 @@ public class Planner {
             break;
         }
         saveModelingResults();
-        writeToFile(modelingResult);
+        writeToFile(fileName);
     }
 
     private void migrateToOtherProcessor(Task task, Map.Entry<Processor, Integer> newProcessorAndTime, Processor oldProcessor){
@@ -164,7 +169,7 @@ public class Planner {
                 times.add(taskEndTime);
             else {
                 Processor processorOfParent = getProcessorOfTask(parent);
-                sumTime += taskEndTime + getTactsWithSendingReceivingDataAfterEt(processorOfParent, taskEndTime) +
+                sumTime = Math.max(taskEndTime + getTactsWithSendingReceivingDataAfterEt(processorOfParent, taskEndTime), sumTime) +
                         getDependencyWeight(task, parent) * steps(processor, processorOfParent, 1);
                 times.add(sumTime);
             }
@@ -182,17 +187,16 @@ public class Planner {
     }
 
     private int getNearestFreeTactForLoad(int startTime, int endTime, Processor processor) {
-        int i = startTime;
-        while (!(processor.execution.get(i) != null && processor.execution.get(i).isFreeForTaskLoad())
-                && i != endTime) {
-            i++;
+        for (int j = endTime-1; j >= startTime; j--) {
+            if (!processor.execution.get(j).isFullFree())
+                return j+1;
         }
-        return i;
+        return startTime;
     }
 
     private void shiftExecutionUp(Processor processor, int start, int shift) {
         for (int i = start; i <= processor.execution.size(); i++) {
-            processor.execution.put(i, processor.execution.get(i+shift));
+            processor.execution.put(i, processor.execution.get(i + shift));
         }
         for (int i = processor.execution.size(); i > processor.execution.size()-shift; i--) {
             processor.execution.put(i, new Tact());
@@ -277,14 +281,13 @@ public class Planner {
         return -1;
     }
 
-    private void writeToFile(List<String> results) {
-        String fileName = "results.csv";
+    private void writeToFile(String fileName) {
         try {
             File file = new File(fileName);
             if (file.exists())
                 file.delete();
             BufferedWriter newFile = new BufferedWriter(new FileWriter(fileName));
-            for (String line : results) {
+            for (String line : modelingResult) {
                 newFile.write(line + "\n");
             }
             newFile.close();
