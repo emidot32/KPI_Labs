@@ -1,0 +1,88 @@
+***;Topology:; Hypercube;
+   ;Number of processors:; 16;
+   ;Duration for 1 processor:; 748;
+   ;Duration for multiprocessor system:; 74;
+   ;Acceleration coefficient:; 10.108;
+   ;Efficiency coefficient:; 0.632;
+   ;Processor number/metric; Workload, %; Number of forwarding; Hop to payload, %;
+   ; Processor №0; 80.0; 9; 15.0
+   ; Processor №1; 80.0; 9; 15.0
+   ; Processor №2; 74.7; 6; 10.7
+   ; Processor №3; 74.7; 5; 8.9
+   ; Processor №4; 60.0; 4; 8.9
+   ; Processor №5; 54.7; 1; 2.4
+   ; Processor №6; 54.7; 1; 2.4
+   ; Processor №7; 54.7; 1; 2.4
+   ; Processor №8; 54.7; 1; 2.4
+   ; Processor №9; 54.7; 1; 2.4
+   ; Processor №10; 54.7; 1; 2.4
+   ; Processor №11; 54.7; 1; 2.4
+   ; Processor №12; 74.7; 12; 21.4
+   ; Processor №13; 54.7; 3; 7.3
+   ; Processor №14; 54.7; 2; 4.9
+   ; Processor №15; 54.7; 3; 7.3
+   ;Average workload:; 61.9;
+   ;Average number of forwarding:; 3;
+   ;Average hop to payload ratio:; 7.3;
+***;Topology:; Hypercube;
+   ;Number of processors:; 8;
+   ;Duration for 1 processor:; 748;
+   ;Duration for multiprocessor system:; 112;
+   ;Acceleration coefficient:; 6.679;
+   ;Efficiency coefficient:; 0.835;
+   ;Processor number/metric; Workload, %; Number of forwarding; Hop to payload, %;
+   ; Processor №0; 85.0; 4; 4.2
+   ; Processor №1; 89.4; 3; 3.0
+   ; Processor №2; 85.8; 4; 4.1
+   ; Processor №3; 85.8; 3; 3.1
+   ; Processor №4; 75.2; 6; 7.1
+   ; Processor №5; 85.8; 10; 10.3
+   ; Processor №6; 72.6; 4; 4.9
+   ; Processor №7; 76.1; 5; 5.8
+   ;Average workload:; 82.0;
+   ;Average number of forwarding:; 4;
+   ;Average hop to payload ratio:; 5.3;
+***;Topology:; DeBruine;
+   ;Number of processors:; 8;
+   ;Duration for 1 processor:; 748;
+   ;Duration for multiprocessor system:; 114;
+   ;Acceleration coefficient:; 6.561;
+   ;Efficiency coefficient:; 0.820;
+   ;Processor number/metric; Workload, %; Number of forwarding; Hop to payload, %;
+   ; Processor №0; 87.0; 8; 8.0
+   ; Processor №1; 84.3; 5; 5.2
+   ; Processor №2; 84.3; 5; 5.2
+   ; Processor №3; 87.0; 5; 5.0
+   ; Processor №4; 73.9; 5; 5.9
+   ; Processor №5; 71.3; 5; 6.1
+   ; Processor №6; 84.3; 12; 12.4
+   ; Processor №7; 71.3; 3; 3.7
+   ;Average workload:; 80.4;
+   ;Average number of forwarding:; 6;
+   ;Average hop to payload ratio:; 6.4;
+***;Topology:; DeBruine;
+   ;Number of processors:; 16;
+   ;Duration for 1 processor:; 748;
+   ;Duration for multiprocessor system:; 75;
+   ;Acceleration coefficient:; 9.973;
+   ;Efficiency coefficient:; 0.623;
+   ;Processor number/metric; Workload, %; Number of forwarding; Hop to payload, %;
+   ; Processor №0; 78.9; 11; 18.3
+   ; Processor №1; 53.9; 1; 2.4
+   ; Processor №2; 72.4; 8; 14.5
+   ; Processor №3; 53.9; 4; 9.8
+   ; Processor №4; 53.9; 1; 2.4
+   ; Processor №5; 53.9; 1; 2.4
+   ; Processor №6; 53.9; 2; 4.9
+   ; Processor №7; 53.9; 4; 9.8
+   ; Processor №8; 53.9; 1; 2.4
+   ; Processor №9; 53.9; 1; 2.4
+   ; Processor №10; 76.3; 8; 13.8
+   ; Processor №11; 53.9; 3; 7.3
+   ; Processor №12; 59.2; 5; 11.1
+   ; Processor №13; 53.9; 4; 9.8
+   ; Processor №14; 71.1; 11; 20.4
+   ; Processor №15; 78.9; 12; 20.0
+   ;Average workload:; 61.0;
+   ;Average number of forwarding:; 4;
+   ;Average hop to payload ratio:; 9.5;
