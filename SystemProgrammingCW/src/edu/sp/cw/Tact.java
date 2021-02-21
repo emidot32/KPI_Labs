@@ -24,6 +24,10 @@ public class Tact {
         return sendData == null && receiveData == null;
     }
 
+    public boolean isJustExecute() {
+        return task != null && sendData == null && receiveData == null;
+    }
+
     @Override
     public String toString() {
         return String.format("%s%s", task != null ? "["+task.id+"]":"", sendData != null ? "/S["+sendData+"]" :

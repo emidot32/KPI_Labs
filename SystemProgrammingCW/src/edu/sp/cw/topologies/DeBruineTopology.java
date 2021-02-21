@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 
 public class DeBruineTopology extends Topology {
     @Override
-    public List<Processor> createTopology(boolean part) {
+    public List<Processor> createTopology() {
         List<Processor> processors = new ArrayList<>();
         IntStream.range(0, NUMBER_OF_PROCESSORS)
                 .forEach(i -> processors.add(new Processor(i)));
@@ -43,7 +43,7 @@ public class DeBruineTopology extends Topology {
         return Integer.parseInt(binary, 2);
     }
 
-    public DeBruineTopology(int numberOfProcessors) {
-        super(numberOfProcessors);
+    public DeBruineTopology(int numberOfProcessors, String topologyName) {
+        super(numberOfProcessors, topologyName);
     }
 }

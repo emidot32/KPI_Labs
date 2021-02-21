@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 public class VectorTopology extends Topology{
     @Override
     // Method for topology setting. In this case - vector or linear.
-    public List<Processor> createTopology(boolean part) {
+    public List<Processor> createTopology() {
         List<Processor> processors = new ArrayList<>();
         IntStream.range(0, NUMBER_OF_PROCESSORS)
                 .forEach(i -> processors.add(new Processor(i)));
@@ -28,7 +28,7 @@ public class VectorTopology extends Topology{
         return processors;
     }
 
-    public VectorTopology(int NUMBER_OF_PROCESSORS) {
-        super(NUMBER_OF_PROCESSORS);
+    public VectorTopology(int numberOfProcessors, String topologyName) {
+        super(numberOfProcessors, topologyName);
     }
 }

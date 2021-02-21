@@ -6,10 +6,15 @@ import java.util.stream.Collectors;
 
 public class Processor {
     public int id;
-    public Map<Integer, Tact> execution = new HashMap<>();
-    public List<Processor> neighbours = new ArrayList<>();
+    public Map<Integer, Tact> execution;
+    public List<Processor> neighbours;
+    public double workloadCoef = 0;
+    public int numberOfForwarding = 0;
+    public double hopToWorkloadRatio = 0;
 
     public Processor(int id) {
+        this.execution = new HashMap<>();
+        this.neighbours = new ArrayList<>();
         this.id = id;
     }
 
@@ -27,7 +32,6 @@ public class Processor {
             if (taskOnTact != null)
                 tasks.add(taskOnTact.task);
         });
-        //System.out.println(tasks);
         return new ArrayList<>(tasks);
     }
 
@@ -65,7 +69,7 @@ public class Processor {
     @Override
     public String toString() {
         List<String> neighbourIds = neighbours.stream()
-                .map(neighbour -> Integer.toBinaryString(neighbour.id)).collect(Collectors.toList());
+                .map(neighbour -> Integer.toString(neighbour.id)).collect(Collectors.toList());
         return "Processor{" +
                 "id=" + id +
                 ", neighbours=" + neighbourIds +
