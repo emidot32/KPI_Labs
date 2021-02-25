@@ -50,7 +50,7 @@ public class ResultWriter {
 
     private void saveAllocationMetrics(int maxTact) {
         allocationMetrics.add(String.format("***;Topology:; %s;", topology.name));
-        allocationMetrics.add(String.format("   ;Method:; %s;", "Newton"));
+        //allocationMetrics.add(String.format("   ;Method:; %s;", "Newton"));
         allocationMetrics.add(String.format("   ;Number of processors:; %d;", topology.numberOfProcessors));
         allocationMetrics.add(String.format("   ;Duration for 1 processor:; %d;", planner.count));
         allocationMetrics.add(String.format("   ;Duration for multiprocessor system:; %d;", maxTact));
