@@ -11,9 +11,7 @@ public class VectorTopology extends Topology{
     @Override
     // Method for topology setting. In this case - vector or linear.
     public List<Processor> createTopology() {
-        List<Processor> processors = new ArrayList<>();
-        IntStream.range(0, NUMBER_OF_PROCESSORS)
-                .forEach(i -> processors.add(new Processor(i)));
+        init();
         for (int i = 0; i < processors.size(); i++) {
             List<Processor> neighboursOfCurrentProc = processors.get(i).neighbours;
             if (i == 0){

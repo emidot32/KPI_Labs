@@ -50,7 +50,8 @@ public class ResultWriter {
 
     private void saveAllocationMetrics(int maxTact) {
         allocationMetrics.add(String.format("***;Topology:; %s;", topology.name));
-        allocationMetrics.add(String.format("   ;Number of processors:; %d;", topology.NUMBER_OF_PROCESSORS));
+        allocationMetrics.add(String.format("   ;Method:; %s;", "Newton"));
+        allocationMetrics.add(String.format("   ;Number of processors:; %d;", topology.numberOfProcessors));
         allocationMetrics.add(String.format("   ;Duration for 1 processor:; %d;", planner.count));
         allocationMetrics.add(String.format("   ;Duration for multiprocessor system:; %d;", maxTact));
         allocationMetrics.add(String.format("   ;Acceleration coefficient:; %.3f;", planner.count / (double) maxTact));
@@ -59,7 +60,7 @@ public class ResultWriter {
         allocationMetrics.add("   ;Processor number/metric; Workload, %; Number of forwarding; Hop to payload, %;");
         planner.processors.stream()
                 .peek(processor ->
-                    allocationMetrics.add(String.format("   ; Processor №%d; %.1f; %d; %.1f", processor.id,
+                    allocationMetrics.add(String.format("   ; Processor №%d; %.1f; %d; %.1f;", processor.id,
                             processor.workloadCoef, processor.numberOfForwarding, processor.hopToWorkloadRatio))
                 )
                 .mapToDouble(processor -> processor.workloadCoef)

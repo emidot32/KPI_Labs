@@ -17,7 +17,7 @@ public class Planner {
         NUMBER_OF_TASKS = adjacencyMatrix.length;
         getDataFromAdjacencyMatrix(adjacencyMatrix, tasksWeights);
         processors = topology.createTopology();
-        this.NUMBER_OF_PROCESSORS = topology.NUMBER_OF_PROCESSORS;
+        this.NUMBER_OF_PROCESSORS = topology.numberOfProcessors;
     }
 
     void getDataFromAdjacencyMatrix(int[][] adjacencyMatrix, int[] tasksWeights) {
@@ -222,7 +222,7 @@ public class Planner {
 
     private int steps(Processor processor1, Processor processor2, int count){
         List<Integer> steps = new ArrayList<>();
-        if (processor1.hasNeighbour(processor2) || count > NUMBER_OF_PROCESSORS/1.5) return count;
+        if (processor1.hasNeighbour(processor2) || count > NUMBER_OF_PROCESSORS/2) return count;
         else {
             count++;
             for (Processor neighbour: processor1.neighbours) {

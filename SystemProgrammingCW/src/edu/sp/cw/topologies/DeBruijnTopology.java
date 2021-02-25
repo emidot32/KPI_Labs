@@ -2,26 +2,23 @@ package edu.sp.cw.topologies;
 
 import edu.sp.cw.Processor;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 
-public class DeBruineTopology extends Topology {
+public class DeBruijnTopology extends Topology {
     @Override
     public List<Processor> createTopology() {
-        List<Processor> processors = new ArrayList<>();
-        IntStream.range(0, NUMBER_OF_PROCESSORS)
-                .forEach(i -> processors.add(new Processor(i)));
-        for (int i = 0; i < NUMBER_OF_PROCESSORS; i++) {
+        init();
+        for (int i = 0; i < numberOfProcessors; i++) {
             Processor currentProcessor = processors.get(i);
             List<Processor> neighbours = currentProcessor.neighbours;
             addNeighbourWithCheck(processors.get(shiftLeft(i)), neighbours, currentProcessor);
             addNeighbourWithCheck(processors.get(shiftLeft(i)+1), neighbours, currentProcessor);
             addNeighbourWithCheck(processors.get(i >> 1), neighbours, currentProcessor);
-            addNeighbourWithCheck(processors.get((i >> 1)+NUMBER_OF_PROCESSORS/2), neighbours, currentProcessor);
+            addNeighbourWithCheck(processors.get((i >> 1)+ numberOfProcessors /2), neighbours, currentProcessor);
         }
-        removeTwoProcessors(part, processors);
+        removeTwoProcessors();
+        System.out.println(processors);
         return processors;
     }
 
@@ -43,7 +40,7 @@ public class DeBruineTopology extends Topology {
         return Integer.parseInt(binary, 2);
     }
 
-    public DeBruineTopology(int numberOfProcessors, String topologyName) {
+    public DeBruijnTopology(int numberOfProcessors, String topologyName) {
         super(numberOfProcessors, topologyName);
     }
 }
