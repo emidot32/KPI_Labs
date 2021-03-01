@@ -18,7 +18,6 @@ public class DeBruijnTopology extends Topology {
             addNeighbourWithCheck(processors.get((i >> 1)+ numberOfProcessors /2), neighbours, currentProcessor);
         }
         removeTwoProcessors();
-        System.out.println(processors);
         return processors;
     }
 

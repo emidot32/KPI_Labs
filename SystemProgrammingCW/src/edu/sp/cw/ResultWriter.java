@@ -78,7 +78,7 @@ public class ResultWriter {
     }
 
     private void writeToFile(String fileName, List<String> results, boolean append) {
-        String filePathName = "src/edu/sp/cw/results/"+fileName;
+        String filePathName = "results/"+fileName;
         try {
             File file = new File(filePathName);
             if (file.exists() && !append)

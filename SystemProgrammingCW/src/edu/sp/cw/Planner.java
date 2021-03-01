@@ -260,7 +260,8 @@ public class Planner {
                         flag = false;
                 }
             }
-            if (flag) {
+            int limit = NUMBER_OF_PROCESSORS == 8 ? 150 : 100;
+            if (flag && i > limit) {
                 setParameters(workloadTacts, numbersOfForwarding, i);
                 return i-1;
             }
