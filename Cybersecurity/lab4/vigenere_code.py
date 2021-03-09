@@ -44,7 +44,7 @@ def write_to_file(text: str, filename: str):
 
 
 def break_cipher(encoded_text: str, needed_result: str, key_length=None):
-    key = []
+    key = ''
     start_time = time.perf_counter_ns()
     for i in range(len(encoded_text)):
         if key_length is not None and i >= key_length:
@@ -53,11 +53,11 @@ def break_cipher(encoded_text: str, needed_result: str, key_length=None):
 
         for sym in ALL_SYMBOLS:
             code = get_code(encoded_text[i])
-            prob_key = ''.join(key) + sym
+            prob_key = key + sym
             decrypted_letter = get_char(
                 (code - get_code(prob_key[i % len(prob_key)])) + len(ALL_SYMBOLS) % len(ALL_SYMBOLS))
             if decrypted_letter == needed_result[i]:
-                key.append(sym)
+                key = prob_key
                 break
 
     print((time.perf_counter_ns() - start_time)/1000)
