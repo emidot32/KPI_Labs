@@ -75,7 +75,7 @@ def break_cipher(encoded_text: str, needed_result: str):
 
 KEY1 = (7, 15)
 KEY2 = (11, 23)
-TEXT = read_txt_file('text.txt')
+TEXT = read_txt_file('text_ukr.txt')
 print(f"Не заш. текст: {TEXT}")
 print(f"Зашифр. текст: {write_to_txt_file(encode(TEXT, KEY1, KEY2), 'encoded_text.txt')}")
 ENCODED_TEXT = read_txt_file('encoded_text.txt')

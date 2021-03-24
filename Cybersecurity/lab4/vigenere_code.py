@@ -55,7 +55,7 @@ def break_cipher(encoded_text: str, needed_result: str, key_length=None):
 
 
 KEY = "дуже складний ключ"
-print(f"Текст: {read_txt_file('text.txt')}")
-print(f"Зашифрований текст: {write_to_txt_file(encode(read_txt_file('text.txt'), KEY), 'encoded_text.txt')}")
+print(f"Текст: {read_txt_file('text_ukr.txt')}")
+print(f"Зашифрований текст: {write_to_txt_file(encode(read_txt_file('text_ukr.txt'), KEY), 'encoded_text.txt')}")
 print(f"Розшифрований текст: {decode(read_txt_file('encoded_text.txt'), KEY)}")
-# print(break_cipher(read_file("encoded_text.txt"), read_file("text.txt"), len(KEY)))
+# print(break_cipher(read_file("encoded_text.txt"), read_file("text_ukr.txt"), len(KEY)))
