@@ -3,7 +3,7 @@ from Crypto.Signature import DSS
 from Crypto.Hash import SHA256
 
 
-in_memory_password = ["pass1", "pass2", "pass3"]
+in_memory_password = ["pass1, ""pass2", "pass3"]
 
 
 def generate_key():
@@ -26,11 +26,11 @@ def sign_message(text):
 def verify(signature):
     file = open("public_key.pem", "r")
     flag = False
+    pub_key = DSA.import_key(file.read())
+    verifier = DSS.new(pub_key, 'fips-186-3')
     for password in in_memory_password:
         hash_obj = SHA256.new(password.encode('utf-8'))
         try:
-            pub_key = DSA.import_key(file.read())
-            verifier = DSS.new(pub_key, 'fips-186-3')
             verifier.verify(hash_obj, signature)
             flag = True
             break
@@ -42,6 +42,8 @@ def verify(signature):
         print("You are not authenticated!")
 
 
-signature = sign_message("pass1")
+msg = "pass3"
+signature = sign_message(msg)
+print(msg)
 print(signature)
 verify(signature)
