@@ -1,3 +1,5 @@
+import time
+
 from lab7.constants import *
 from lab7.mail_client import *
 
@@ -15,6 +17,10 @@ def dec2bin(num):
 
 def str2bin(text):
     return ''.join(['{:0>16}'.format(str(bin(ord(sym)))[2:]) for sym in text])
+
+
+def int2bin(number):
+    return '{:0>64}'.format(str(bin(number))[2:])
 
 
 def bin2str(bits):
@@ -55,7 +61,7 @@ def generate_keys(bin_key):
     left = bin_key[0:28]
     right = bin_key[28:56]
     if check_key_weakness(left, right):
-        raise Exception("Слабкий ключ!")
+       raise Exception("Слабкий ключ!")
     round_keys = []
     for i in range(0, 16):
         left = shift_left(left, shift_table[i])
@@ -91,21 +97,37 @@ def encrypt_one_block(text, round_keys):
 
 
 def encrypt(text, round_keys):
+    start_time = time.perf_counter_ns()
     text = str2bin(text)
-    return ''.join([bin2str(encrypt_one_block(text[i-64:i], round_keys)) for i in range(64, len(text) + 64, 64)])
+    result = ''.join([bin2str(encrypt_one_block(text[i-64:i], round_keys)) for i in range(64, len(text) + 64, 64)])
+    print("Час (де)шифрування: ", (time.perf_counter_ns() - start_time) / 1000)
+    return result
+
+
+def break_cipher(encrypted_text, needed_result):
+    start_time = time.perf_counter_ns()
+    for i in range(10, 2**48):
+        reversed_r_keys = generate_keys(int2bin(i))[::-1]
+        decrypted_variant = encrypt(encrypted_text, reversed_r_keys)
+        if decrypted_variant == needed_result:
+            print("Час взлому: ", (time.perf_counter() - start_time))
+            return str2bin(i)
+    print("Час неуспішного взлому: ", (time.perf_counter() - start_time))
+    return None
 
 
 mail_msg = get_last_msg("plain_text").strip()
-bin_key = str2bin("ж)tЪ")
-#bin_key = "0000100101011100010100100110010101100100110010011100101110001100"
+#bin_key = str2bin("ж)tЪ")
+bin_key = "0000000000000000000000000000000101100100110010011100101110001100"
 
 r_keys = generate_keys(bin_key)
-encoded_text = encrypt(mail_msg, r_keys)
+encrypted_text = encrypt(mail_msg, r_keys)
 reversed_round_keys = r_keys[::-1]
-decoded_text = encrypt(encoded_text, reversed_round_keys)
-send_msg("encoded_text", encoded_text)
+decrypted_text = encrypt(encrypted_text, reversed_round_keys)
+send_msg("encoded_text", encrypted_text)
 print(f"Не заш. текст: {mail_msg}")
-print(f"Зашифр. текст: {encoded_text}")
-print(f"Розшиф. текст: {decoded_text}")
+print(f"Зашифр. текст: {encrypted_text}")
+print(f"Розшиф. текст: {decrypted_text}")
+#break_cipher(encrypted_text, mail_msg)
 
 

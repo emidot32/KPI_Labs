@@ -54,12 +54,12 @@ def break_the_cipher(encrypted_text, needed_result, key_length=None):
 
 TEXT_UKR = read_txt_file('text_ukr.txt')
 print(f"Не заш. текст укр: {TEXT_UKR}")
-encoded_text, key = crypt_logic(TEXT_UKR)
-print(f"Зашифр. текст укр: {write_to_txt_file(str(encoded_text), 'encoded_text_ukr.txt')}")
-print(f"Розшиф. текст укр: {crypt_logic(encoded_text, key).decode('utf-8')}")
+encrypted_text, key = crypt_logic(TEXT_UKR)
+print(f"Зашифр. текст укр: {write_to_txt_file(str(encrypted_text), 'encoded_text_ukr.txt')}")
+print(f"Розшиф. текст укр: {crypt_logic(encrypted_text, key).decode('utf-8')}")
 
 TEXT_ENG = read_docx_file('text_eng.docx')
 print(f"Не заш. текст англ: {TEXT_ENG}")
-encoded_text, key = crypt_logic(TEXT_ENG)
-print(f"Зашифр. текст англ: {write_to_docx_file(str(encoded_text), 'encoded_text_eng.docx')}")
-print(f"Розшиф. текст англ: {crypt_logic(encoded_text, key).decode('utf-8')}")
+encrypted_text, key = crypt_logic(TEXT_ENG)
+print(f"Зашифр. текст англ: {write_to_docx_file(str(encrypted_text), 'encoded_text_eng.docx')}")
+print(f"Розшиф. текст англ: {crypt_logic(encrypted_text, key).decode('utf-8')}")

@@ -4,30 +4,30 @@ from symbols import *
 from file_manager import *
 
 
-def encode(text: str, key1=(5, 15), key2=(11, 23)):
+def encrypt(text: str, key1=(5, 15), key2=(11, 23)):
     start_time = time.perf_counter_ns()
     length = len(ALL_SYMBOLS_ENG)
     if lcd(key1[0], length) != 1 or lcd(key2[0], length) != 1:
         raise Exception("Мультиплікативний ключ та кількість символів не взаємно прості!")
-    encoded_text = []
+    encrypted_text = []
     for sym in text:
         encoded_code1 = (get_code(sym, ALL_SYMBOLS_ENG) * key1[0] + key1[1]) % length
-        encoded_letter = get_char((encoded_code1 * key2[0] + key2[1]) % length, ALL_SYMBOLS_ENG)
-        encoded_text.append(encoded_letter)
+        encrypted_letter = get_char((encoded_code1 * key2[0] + key2[1]) % length, ALL_SYMBOLS_ENG)
+        encrypted_text.append(encrypted_letter)
     print("Час шифрування: ", (time.perf_counter_ns() - start_time) / 1000)
-    return ''.join(encoded_text)
+    return ''.join(encrypted_text)
 
 
-def decode(encoded_text: str, key1=(5, 15), key2=(11, 23)):
+def decrypt(encrypted_text: str, key1=(5, 15), key2=(11, 23)):
     start_time = time.perf_counter_ns()
-    decoded_text = []
-    for sym in encoded_text:
+    decrypted_text = []
+    for sym in encrypted_text:
         decoded_code1 = ((get_code(sym, ALL_SYMBOLS_ENG) - key2[1]) * key_inverse(key2[0])) % len(ALL_SYMBOLS_ENG)
-        decoded_letter = get_char(((decoded_code1 - key1[1]) * key_inverse(key1[0])) % len(ALL_SYMBOLS_ENG),
+        decrypted_letter = get_char(((decoded_code1 - key1[1]) * key_inverse(key1[0])) % len(ALL_SYMBOLS_ENG),
                                   ALL_SYMBOLS_ENG)
-        decoded_text.append(decoded_letter)
+        decrypted_text.append(decrypted_letter)
     print("Час розшифрування: ", (time.perf_counter_ns() - start_time) / 1000)
-    return ''.join(decoded_text)
+    return ''.join(decrypted_text)
 
 
 def key_inverse(key: int):
@@ -77,7 +77,7 @@ KEY1 = (7, 15)
 KEY2 = (11, 23)
 TEXT = read_txt_file('text_ukr.txt')
 print(f"Не заш. текст: {TEXT}")
-print(f"Зашифр. текст: {write_to_txt_file(encode(TEXT, KEY1, KEY2), 'encoded_text.txt')}")
-ENCODED_TEXT = read_txt_file('encoded_text.txt')
-print(f"Розшиф. текст: {decode(ENCODED_TEXT, KEY1, KEY2)}")
+print(f"Зашифр. текст: {write_to_txt_file(encrypt(TEXT, KEY1, KEY2), 'encrypted_text.txt')}")
+ENCRYPTED_TEXT = read_txt_file('encrypted_text.txt')
+print(f"Розшиф. текст: {decrypt(ENCRYPTED_TEXT, KEY1, KEY2)}")
 #print(break_cipher(ENCODED_TEXT, TEXT))
