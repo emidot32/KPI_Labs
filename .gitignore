@@ -7,3 +7,9 @@ dist/
 .idea/
 build/
 *.iml
+gradle/
+*.gradle
+gradle.properties
+gradlew
+*.bat
+configs.py
