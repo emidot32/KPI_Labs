@@ -6,9 +6,7 @@ from math import ceil
 
 
 def generate_key(text):
-    generated_key = int('1' * (len(text)//2))
-    return generated_key.to_bytes(text, byteorder='big')
-    #return os.urandom(len(text)//2)
+    return os.urandom(len(text)//2)
 
 
 def crypt_logic(text, key=None):
