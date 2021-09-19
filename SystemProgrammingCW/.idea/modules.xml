@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/KPI_Labs.iml" filepath="$PROJECT_DIR$/.idea/KPI_Labs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SystemProgrammingCW.iml" filepath="$PROJECT_DIR$/SystemProgrammingCW.iml" />
     </modules>
   </component>
 </project>
