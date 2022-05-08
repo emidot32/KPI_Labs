@@ -13,3 +13,6 @@ gradle.properties
 gradlew
 *.bat
 configs.py
+venv/
+static/
+out/
