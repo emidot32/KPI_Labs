@@ -1,0 +1,23 @@
+openapi: 3.0.0
+description: Conditions generation endpoint
+tags:
+  - name: conditions
+produces:
+  - "application/json"
+responses:
+    '200':
+      description: Valid spaces for further getting solution
+      schema:
+        type: object
+        properties:
+          horizontal_space_numbers:
+            type: object
+            example: {1: [2, 1, 2], 4: [1, 4, 1], 7: [1, 1, 1]}
+          verticall_space_numbers:
+            type: object
+            example: {2: [1, 2, 4], 5: [1, 2, 3], 7: [3, 1, 1]}
+
+    '400':
+      description: Bad Request
+    '500':
+      description: Internal Server Error

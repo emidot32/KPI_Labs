@@ -1,0 +1,32 @@
+openapi: 3.0.0
+description: Ship placement endpoint
+tags:
+  - name: ship-placements
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+parameters:
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      properties:
+        horizontal_space_numbers:
+          type: object
+          example: {1: [2, 1, 2], 4: [1, 4, 1], 7: [1, 1, 1]}
+        vertical_space_numbers:
+          type: object
+          example: {2: [1, 2, 4], 5: [1, 2, 3], 7: [3, 1, 1]}
+responses:
+    '200':
+      description: List of seas with stationed ships
+      schema:
+        type: array
+        items:
+          type: array
+    '400':
+      description: Bad Request
+    '500':
+      description: Internal Server Error
